@@ -1,12 +1,11 @@
 import React from 'react'
+import LifelineImage from './lifelineImage'
 
 
 export default function MainBody () {
   return (
-    <div className='hidden md:flex justify-center items-center mt-32'>
-
-        <h1>we can add here body content</h1>
-        
+    <div className='hidden md:flex flex-col justify-center items-center '>
+      <LifelineImage />   
     </div>
   )
 }

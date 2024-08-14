@@ -6,7 +6,7 @@ import MainBody from '../components/mainBody'
 
 export default function HomePage() {
  return (
-    <div>
+    <div className='flex flex-col '>
         <Navbar />
         <MainBody />
         <Footer />

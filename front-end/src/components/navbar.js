@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import { CiHeart } from "react-icons/ci";
-import { CiSearch } from "react-icons/ci";
-import { SlBag } from "react-icons/sl";
-import { MdPersonOutline } from "react-icons/md";
 import { IoMdMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import lifelineImage from './lifeline.jpg';
@@ -25,18 +21,18 @@ const Navbar = () => {
             𝕃𝕚𝕗𝕖𝕝𝕚𝕟𝕖  
           </div>
           <div className='flex md:hidden space-x-2 items-center'>
-            <button className=' text-white font-bold'>
+            {/* <button className=' text-white font-bold'>
               Log in
-            </button>
+            </button> */}
             <IoMdMenu className='text-white size-7 hover:bg-red-600 rounded' onClick={toggleMenu} />
           </div>
     </div>
     {isMenuOpen && (
-      <div className=' fixed top-0 left-0  w-full h-full flex flex-col justify-between p-6 bg-white '>
+      <div className=' fixed top-0 left-0  w-screen h-screen flex flex-col justify-between p-6 bg-white '>
                 <div className='flex justify-end '>
                   <IoClose className='size-6 text-red-400 hover:bg-red-700 rounded' onClick={closingWindow}/>
                 </div>
-                <div className=' relative flex flex-col justify-center items-center bottom-16 '>
+                <div className='  flex flex-col justify-start items-center h-screen w-screen '>
                 <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Emergency Alerts</a>
                 <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm '>Resource Locator</a>
                 <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm '>Query Chatbot</a>
@@ -45,7 +41,7 @@ const Navbar = () => {
                 <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Emotional Support</a>
 
                 
-              </div>
+                </div>
              
               
         </div>
@@ -71,10 +67,8 @@ const Navbar = () => {
       {/* Desktop View:Icons and Login/Signup */}
       <div className=' md:flex md:space-x-2 md:justify-between items-center'>
         
-        <div className='flex space-x-2 px-1 py-0.5 border border-gray-300  rounded-sm '>
-          <div>SignUp</div>
-          <span>/</span>
-          <div>LogIn</div>
+        <div className='md:flex md:space-x-2 px-2 py-0.5 border border-gray-300  rounded-sm hover:bg-red-400 '>
+          <div>Log In</div>
         </div>
       </div>
       
@@ -84,7 +78,6 @@ const Navbar = () => {
       {/* replace here to original image */}
  
       <img className='object-cover w-full h-50 p-4 rounded-lg' src={lifelineImage} alt="Lifeline image" />
-
     
     </div>
     <div className='md:hidden'>
