@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { IoMdMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import lifelineImage from './lifeline.jpg';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [ isMenuOpen , setIsMenuOpen ] = useState(false);
+  const location = useLocation()
 
   const toggleMenu = () => {
     setIsMenuOpen(true);
@@ -12,7 +14,7 @@ const Navbar = () => {
   const closingWindow = () => {
       setIsMenuOpen(false)
   }
-
+  const isHomePage = location.pathname === '/';
 
   return (
     <nav className='bg-red-500 p-6 m-1 rounded-t-md'>
@@ -33,7 +35,7 @@ const Navbar = () => {
                   <IoClose className='size-6 text-red-400 hover:bg-red-700 rounded' onClick={closingWindow}/>
                 </div>
                 <div className='  flex flex-col justify-start items-center h-screen w-screen '>
-                <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Emergency Alerts</a>
+                <Link to='/emergency-alert' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Emergency Alerts</Link>
                 <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm '>Resource Locator</a>
                 <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm '>Query Chatbot</a>
                 <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Personalized Support</a>
@@ -56,7 +58,7 @@ const Navbar = () => {
 
       {/* Desktop View: Menu Items  */}
       <div className='hidden md:flex md:flex-row text-black font-semibold'>
-        <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Emergency Alerts</a>
+        <Link to='/emergency-alert' className=' hover:bg-red-500 px-2 rounded-sm'>Emergency Alerts</Link>
         <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Resource Locator</a>
         <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Query Chatbot</a>
         <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Personalized Support</a>
@@ -74,20 +76,25 @@ const Navbar = () => {
       
       
     </div>
-    <div className='md:hidden'>
-      {/* replace here to original image */}
- 
-      <img className='object-cover w-full h-50 p-4 rounded-lg' src={lifelineImage} alt="Lifeline image" />
+    {isHomePage && (
+      <>
+        <div className='md:hidden'>
+          {/* replace here to original image */}
     
-    </div>
-    <div className='md:hidden'>
-      <h1 className='text-white text-3xl '>Re imagining the way you think introducing LIFELINE</h1>
-      <h6 className='text-white mt-2'>Click on the explore button below to know more about Lifeline.</h6>
-    </div>
+          <img className='object-cover w-full h-50 p-4 rounded-lg' src={lifelineImage} alt="Lifeline image" />
+        
+        </div>
+        <div className='md:hidden'>
+          <h1 className='text-white text-3xl '>Re imagining the way you think introducing LIFELINE</h1>
+          <h6 className='text-white mt-2'>Click on the explore button below to know more about Lifeline.</h6>
+        </div>
 
-    <div className='flex justify-center mt-6 md:hidden'>
-      <button className='bg-white px-10 py-1 rounded-sm font-medium'>Explore</button>
-    </div>
+        <div className='flex justify-center mt-6 md:hidden'>
+          <button className='bg-white px-10 py-1 rounded-sm font-medium'>Explore</button>
+        </div>
+      </>
+    )} 
+
   </nav>
   );
 };
