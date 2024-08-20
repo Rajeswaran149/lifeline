@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { IoMdMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import lifelineImage from './lifeline.jpg';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [ isMenuOpen , setIsMenuOpen ] = useState(false);
   const location = useLocation()
+  const Navigate = useNavigate()
 
   const toggleMenu = () => {
     setIsMenuOpen(true);
@@ -15,6 +16,9 @@ const Navbar = () => {
       setIsMenuOpen(false)
   }
   const isHomePage = location.pathname === '/';
+  const handleChatbotClick = () => {
+    Navigate('/query-chatbot');
+   }
 
   return (
     <nav className='bg-red-500 p-6 m-1 rounded-t-md'>
@@ -23,9 +27,7 @@ const Navbar = () => {
             𝕃𝕚𝕗𝕖𝕝𝕚𝕟𝕖  
           </div>
           <div className='flex md:hidden space-x-2 items-center'>
-            {/* <button className=' text-white font-bold'>
-              Log in
-            </button> */}
+            
             <IoMdMenu className='text-white size-7 hover:bg-red-600 rounded' onClick={toggleMenu} />
           </div>
     </div>
@@ -35,13 +37,8 @@ const Navbar = () => {
                   <IoClose className='size-6 text-red-400 hover:bg-red-700 rounded' onClick={closingWindow}/>
                 </div>
                 <div className='  flex flex-col justify-start items-center h-screen w-screen '>
-                <Link to='/emergency-alert' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Emergency Alerts</Link>
-                <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm '>Resource Locator</a>
-                <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm '>Query Chatbot</a>
-                <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Personalized Support</a>
-                <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Quick Actions</a>
-                <a href='#' className='text-black font-semibold mb-4 hover:bg-red-500 px-2 rounded-sm'>Emotional Support</a>
-
+                <Link to='/emergency-alert' className=' bg-red-500 px-2 py-1 text-black font-semibold mb-4 hover:bg-red-800 hover:text-white  rounded-sm'>Emergency Alerts</Link>
+                <Link to='/query-chatbot' className='bg-red-500 px-4 py-1 text-black font-semibold mb-4 hover:bg-red-800  hover:text-white rounded-sm '>Query Chatbot</Link>
                 
                 </div>
              
@@ -57,21 +54,15 @@ const Navbar = () => {
       </div>
 
       {/* Desktop View: Menu Items  */}
-      <div className='hidden md:flex md:flex-row text-black font-semibold'>
-        <Link to='/emergency-alert' className=' hover:bg-red-500 px-2 rounded-sm'>Emergency Alerts</Link>
-        <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Resource Locator</a>
-        <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Query Chatbot</a>
-        <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Personalized Support</a>
-        <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Quick Actions</a>
-        <a className=' hover:bg-red-500 px-2 rounded-sm' href='#'>Emotional Support</a>
+      <div className='hidden md:flex md:flex-row text-black md:gap-4 font-semibold'>
+        <Link to='/emergency-alert' className='bg-red-500  px-2 py-1 rounded-sm hover:bg-red-800 hover:text-white'>Emergency Alerts</Link>
+        <Link to='/query-chatbot' className=' bg-red-500 px-2 py-1 rounded-sm hover:bg-red-800 hover:text-white' >Query Chatbot</Link>
       </div>
       
       {/* Desktop View:Icons and Login/Signup */}
       <div className=' md:flex md:space-x-2 md:justify-between items-center'>
         
-        <div className='md:flex md:space-x-2 px-2 py-0.5 border border-gray-300  rounded-sm hover:bg-red-400 '>
-          <div>Log In</div>
-        </div>
+
       </div>
       
       
@@ -86,11 +77,14 @@ const Navbar = () => {
         </div>
         <div className='md:hidden'>
           <h1 className='text-white text-3xl '>Re imagining the way you think introducing LIFELINE</h1>
-          <h6 className='text-white mt-2'>Click on the explore button below to know more about Lifeline.</h6>
+          <h6 className='text-white mt-2'>Click on the Chatbot button below to ask your queries.</h6>
         </div>
 
         <div className='flex justify-center mt-6 md:hidden'>
-          <button className='bg-white px-10 py-1 rounded-sm font-medium'>Explore</button>
+          <button 
+          className='bg-white px-10 py-1 rounded-sm font-medium hover:bg-red-500 hover:text-white' 
+          onClick={handleChatbotClick}
+          >Chatbot</button>
         </div>
       </>
     )} 
